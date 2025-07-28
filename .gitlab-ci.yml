@@ -1,0 +1,29 @@
+image: eduardobenck/dockerdind:1.5
+
+stages:
+  - build
+  - deploy
+
+
+build:
+  stage: build
+  only:
+    - main
+  tags:
+    - docker-runner
+  script:
+    - sh build.sh
+  allow_failure: false
+
+
+deploy:
+  stage: deploy
+  only:
+    - main
+  tags:
+    - docker-runner
+  script:
+    - export KUBECONFIG=$HOME/.kube/config
+    - sh deploy.sh
+  allow_failure: false
+

@@ -1,0 +1,409 @@
+
+.cke_chrome {
+  display: none !important;
+}
+
+p {
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+
+.document-editor {
+  border:none !important;
+  border-radius: var(--ck-border-radius);
+
+  /* This element is a flex container for easier rendering. */
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.document-editor__toolbar {
+  /* Make sure the toolbar container is always above the editable. */
+  z-index: 1;
+
+  /* Create the illusion of the toolbar floating over the editable. */
+  box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
+
+  /* Use the CKEditor CSS variables to keep the UI consistent. */
+  border-bottom: 1px solid var(--ck-color-toolbar-border);
+}
+
+/* Adjust the look of the toolbar inside the container. */
+.document-editor__toolbar .ck-toolbar {
+  border: 0;
+  border-radius: 0;
+}
+
+.document-editor__editable-container {
+  padding: calc(2 * var(--ck-spacing-large));
+  background: var(--ck-color-base-foreground);
+
+  /* Make it possible to scroll the "page" of the edited content. */
+  overflow-y: scroll;
+}
+.ck-editor {
+  display: flex;
+  justify-content: center;
+}
+.ck-editor__main {
+  width: var(--document-width);
+}
+.document-editor__editable-container .ck-editor__editable_inline {
+  /* Set the dimensions of the "page". */
+  width: var(--document-width);
+  min-height: 21cm;
+
+  border: 1px hsl(0, 0%, 82.7%) solid;
+  border-radius: var(--ck-border-radius);
+  background: white;
+
+  /* The "page" should cast a slight shadow (3D illusion). */
+  box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.1);
+
+  /* Center the "page". */
+  margin: 0 auto;
+}
+
+.ck.ck-content.ck-editor__editable {
+  padding-top: 2cm;
+  padding-right: 1.5cm;
+  padding-bottom: 2cm;
+  padding-left: 3cm;
+}
+
+.signature {
+  clear: both;
+  &:first-of-type {
+    margin-top: 48px;
+  }
+  & + .signature {
+      margin-top: 24px;
+  }
+  p {
+    text-align: justify;
+    font-size: 10pt !important;
+  }
+}
+
+.qrCode p {
+  font-size: 9pt !important;
+}
+
+.document-editor .ck-content {
+  ol {
+      font-size: 12pt;
+      text-align: justify;
+  }
+
+  ol {
+      padding-inline-start: 0;
+      margin-block-end: 1em;
+      counter-reset: section;
+  }
+  
+  ol li {
+      display: block;
+  }
+  
+  ol > li {
+      counter-increment: section;
+  }
+  
+  ol > li::before {
+      content: counter(section) ". ";
+  }
+  
+  ol ol {
+      margin-block-end: 0;
+      padding-inline-start: 1.5em;
+      counter-reset: subsection;
+  }
+  
+  ol ol > li {
+      counter-increment: subsection;
+  }
+  
+  ol ol > li::before {
+      content: counter(section) "." counter(subsection) " ";
+      margin-inline-end: 0.2em;
+  }
+  
+  ol ol ol {
+      padding-inline-start: 1.5em;
+      counter-reset: subsubsection;
+  }
+  
+  ol ol ol > li {
+      counter-increment: subsubsection;
+  }
+  
+  ol ol ol > li::before {
+      content: counter(section) "." counter(subsection) "." counter(subsubsection) " ";
+  }
+  
+  ol li > :first-child {
+      display: inline;
+  }
+  
+  ol ol ol ol, ol ol ol ol ol {
+      padding-inline-start: 1.5em;
+      counter-reset: subsubsubsection;
+  }
+  
+  ol ol ol ol li {
+      counter-increment: subsubsubsection;
+  }
+  
+  ol ol ol ol li::before {
+      content: counter(section) "." counter(subsection) "." counter(subsubsection) "." counter(subsubsubsection) " ";
+  }
+}
+
+/* Set style for title in word. */
+.document-editor .ck-content h1 {
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.document-editor .ck-content,
+.document-editor .ck-heading-dropdown .ck-list .ck-button__label {
+  font: 12px Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/* Adjust the headings dropdown to host some larger heading styles. */
+.document-editor .ck-heading-dropdown .ck-list .ck-button__label {
+  line-height: calc(
+    1.7 * var(--ck-line-height-base) * var(--ck-font-size-base)
+  );
+  min-width: 6em;
+}
+
+/* Scale down all heading previews because they are way too big to be presented in the UI.
+Preserve the relative scale, though. */
+.document-editor
+  .ck-heading-dropdown
+  .ck-list
+  .ck-button:not(.ck-heading_paragraph)
+  .ck-button__label {
+  transform: scale(0.8);
+  transform-origin: left;
+}
+
+/* Set the styles for "Heading 1". */
+.document-editor .ck-content h2,
+.document-editor
+  .ck-heading-dropdown
+  .ck-heading_heading1
+  .ck-button__label {
+  font-size: 2.18em;
+  font-weight: normal;
+}
+
+.document-editor .ck-content h2 {
+  line-height: 1.37em;
+  padding-top: 0.342em;
+  margin-bottom: 0.142em;
+}
+
+/* Set the styles for "Heading 2". */
+.document-editor .ck-content h3,
+.document-editor
+  .ck-heading-dropdown
+  .ck-heading_heading2
+  .ck-button__label {
+  font-size: 1.75em;
+  font-weight: normal;
+  color: hsl(203, 100%, 50%);
+}
+
+.document-editor
+  .ck-heading-dropdown
+  .ck-heading_heading2.ck-on
+  .ck-button__label {
+  color: var(--ck-color-list-button-on-text);
+}
+
+/* Set the styles for "Heading 2". */
+.document-editor .ck-content h3 {
+  line-height: 1.86em;
+  padding-top: 0.171em;
+  margin-bottom: 0.357em;
+}
+
+/* Set the styles for "Heading 3". */
+.document-editor .ck-content h4,
+.document-editor
+  .ck-heading-dropdown
+  .ck-heading_heading3
+  .ck-button__label {
+  font-size: 1.31em;
+  font-weight: bold;
+}
+
+.document-editor .ck-content h4 {
+  line-height: 1.24em;
+  padding-top: 0.286em;
+  margin-bottom: 0.952em;
+}
+
+/* Set the styles for "Paragraph". */
+.document-editor .ck-content p {
+  font-size: 12pt;
+  line-height: 1.30em;
+  margin: 10px 0;
+}
+
+.document-editor .ck-content blockquote {
+  margin-left: calc(2 * var(--ck-spacing-large));
+  margin-right: calc(2 * var(--ck-spacing-large));
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  p {
+      padding-left: 7cm;
+  }
+}
+
+.ck-content blockquote {
+  border-left: none !important;
+}
+
+.ck.ck-editor__editable:not(
+    .ck-editor__nested-editable
+  ).ck-rounded-corners.ck-focused {
+  border: 1px solid transparent;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.ck.ck-editor__editable:not(
+    .ck-editor__nested-editable
+  ).ck-rounded-corners {
+  border: 1px solid transparent;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#watermark-container {
+  position: absolute;
+  opacity: 0.2;
+  font-size: 12px;
+  line-height: 5;
+  transform: rotate(-45deg);
+  display: flex;
+  pointer-events: none;
+  flex-flow: column;
+  gap: 250px;
+}
+
+figure.table.ck-widget {
+  width: auto;
+}
+
+.ck-restricted-editing_mode_standard {
+  color: black;
+}
+
+.restricted-editing-exception {
+  border: none !important;
+  background: transparent !important;
+}
+
+.document-editor__editable-container {
+  .ck-table-resized {
+    th.ck-editor__editable {
+      padding: 0 !important;
+    }
+  }
+}
+
+.ck-content .image-style-side {
+  max-width: 50%;
+  float: right;
+  margin-left: var(--ck-image-style-spacing);
+}
+
+.ck-content .image.image_resized {
+  max-width: 100%;
+}
+
+.ck-content .image.image_resized {
+  display: block;
+  box-sizing: border-box;
+}
+
+.ck-content .image.image_resized img {
+  width: 100%;
+}
+
+.ck-content .image.image_resized > figcaption {
+  display: block;
+}
+
+p:has(> .image-inline + .image-inline) {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ck p[style="line-height:0;"] {
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  --ckeditor5-preview-height: unset !important;
+  margin: 0 !important;
+  /* width: 100% !important; */
+}
+
+.editor-container__editor-wrapper{
+  max-height: unset !important;
+  min-height: unset !important;
+  background: transparent !important;
+  padding: 0 !important;
+  /* width: 100% !important; */
+}
+
+.editor-container__editor {
+  /* width: 100% !important; */
+  margin: 0 !important;
+}
+.editor-container_document-editor {
+  border: 0 !important;
+}
+.editor-container_document-editor .editor-container__editor-wrapper{
+  overflow-y: hidden !important;
+}
+#editor {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+body {
+  margin: 0;
+}
+
+.page-break {
+  opacity: 0 !important;
+}
+
+/* Aqui entra estilos como margem, etc! */
+.editor-container_document-editor .editor-container__editor .ck.ck-editor__editable {
+  
+}
+
+.ck-widget_selected {
+  outline-color: transparent !important;
+}
+
+.ck.ck-reset_all.ck-widget__type-around, .ck.ck-widget__selection-handle {
+  display: none !important;
+}
+
+@media print {
+  table {
+    display: contents;
+  }
+
+  thead {
+    display: table-row-group;
+  }
+}

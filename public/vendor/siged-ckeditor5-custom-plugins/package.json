@@ -1,0 +1,58 @@
+{
+  "name": "ckeditor5-plugins-test",
+  "version": "1.0.13",
+  "description": "custom ckeditor5 plugins (eg: indent first line, custom format, ad so on...)",
+  "scripts": {
+    "lint": "eslint --quiet '**/*.js' --fix",
+    "stylelint": "stylelint --quiet --allow-empty-input 'theme/**/*.css' 'docs/**/*.css'",
+    "svgo": "svgo -f theme/icons --config=./svgo.yml"
+  },
+  "keywords": [
+    "ckeditor5",
+    "plugin",
+    "indent",
+    "first",
+    "custom",
+    "format"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@ckeditor/ckeditor5-engine": "40.1.0",
+    "@ckeditor/ckeditor5-highlight": "40.1.0",
+    "@ckeditor/ckeditor5-utils": "40.1.0",
+    "@ckeditor/ckeditor5-ui": "40.1.0",
+    "@ckeditor/ckeditor5-upload": "40.1.0",
+    "@ckeditor/ckeditor5-core": "40.1.0",
+    "eslint": "8.10.0",
+    "eslint-config-ckeditor5": "3.1.1",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "husky": "7.0.4",
+    "lint-staged": "12.3.5",
+    "lodash-es": "4.17.21",
+    "svgo": "2.8.0"
+  },
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">=5.7.1"
+  },
+  "files": [
+    "src",
+    "theme",
+    "lang"
+  ],
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --quiet"
+    ]
+  },
+  "eslintIgnore": [
+    "src/lib/**",
+    "packages/**"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
