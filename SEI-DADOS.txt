@@ -1,0 +1,1328 @@
+# Estruturas de Dados e Serviços SEI - Detalhamento Completo
+
+## 1. ESTRUTURAS DE DADOS SEI
+
+### **Andamento**
+| Campo | Descrição |
+|-------|-----------|
+| IdAndamento | Identificador interno do andamento |
+| IdTarefa | Identificador da tarefa associada |
+| IdTarefaModulo | Identificador da tarefa de módulo |
+| Descricao | Texto do andamento |
+| DataHora | Data/hora em que o andamento foi gerado |
+| Unidade | Dados da unidade que gerou o andamento (ver estrutura Unidade) |
+| Usuario | Dados do usuário que gerou o andamento (ver estrutura Usuario) |
+| Atributos | Conjunto de atributos do andamento (ver estrutura AtributoAndamento) |
+
+### **AndamentoMarcador**
+| Campo | Descrição |
+|-------|-----------|
+| IdAndamentoMarcador | Identificador interno do andamento de marcador |
+| Texto | Texto associado com o andamento |
+| DataHora | Data/hora em que o andamento foi gerado |
+| Usuario | Dados do usuário que gerou o andamento (ver estrutura Usuario) |
+| Marcador | Dados do marcador utilizado (ver estrutura Marcador) |
+
+### **Anotacao**
+| Campo | Descrição |
+|-------|-----------|
+| ProtocoloProcedimento | Número do processo visível para o usuário, ex: 12.1.000000077-4 |
+| Descricao | Texto da anotação |
+| SinPrioridade | S/N – Sinalizador indicando se a anotação é prioritária |
+
+### **ArquivoExtensao**
+| Campo | Descrição |
+|-------|-----------|
+| IdArquivoExtensao | Identificador interno do SEI relativo a extensão |
+| Extensao | Texto da extensão (ex.: pdf, ods, doc, ppt,...) |
+| Descricao | Descrição da extensão |
+
+### **Assinatura**
+| Campo | Descrição |
+|-------|-----------|
+| Nome | Nome do assinante |
+| CargoFuncao | Cargo ou função utilizado no momento da assinatura |
+| DataHora | Data/hora em que ocorreu a assinatura |
+| IdUsuario | ID do usuário |
+| IdOrigem | ID origem associado com o usuário no SIP |
+| IdOrgao | ID do órgão do usuário |
+| Sigla | Sigla do usuário |
+
+### **Assunto**
+| Campo | Descrição |
+|-------|-----------|
+| CodigoEstruturado | Código do Assunto, ex.: 00.01.01.01 |
+| Descricao | Descrição do assunto |
+
+### **AtributoAndamento**
+| Campo | Descrição |
+|-------|-----------|
+| Nome | Nome do atributo |
+| Valor | Valor do atributo |
+| IdOrigem | Identificador auxiliar associado com este atributo |
+
+### **AtributoOuvidoria**
+| Campo | Descrição |
+|-------|-----------|
+| Id | Identificador do atributo da ouvidoria, ex.: P |
+| Nome | Nome interno do atributo, ex.: RELACAO |
+| Titulo | Título do atributo para exibição no formulário |
+| Valor | Valor do atributo para exibição |
+
+### **Bloco**
+| Campo | Descrição |
+|-------|-----------|
+| IdBloco | Número do bloco |
+| Unidade | Dados da unidade que gerou o bloco (ver estrutura Unidade) |
+| Usuario | Dados do usuário que gerou o bloco (ver estrutura Usuário) |
+| Descrição | Descrição do bloco |
+| Tipo | Tipo do bloco (A=Assinatura, R=Reunião ou I=Interno) |
+| Estado | Estado do bloco (A=Aberto, D=Disponibilizado, B=Recebido, R=Retornado ou C=Concluído) |
+| SinPrioridade | S/N – Indica se o bloco foi sinalizado como prioritário |
+| SinRevisao | S/N – Indica se o bloco foi sinalizado como revisado |
+| UsuarioAtribuicao | Dados do usuário para o qual o bloco foi atribuído |
+| UnidadesDisponibilizacao | Dados das unidades configuradas para disponibilização |
+
+### **Campo**
+| Campo | Descrição |
+|-------|-----------|
+| Nome | Nome do campo do formulário |
+| Valor | Valor do campo do formulário |
+
+### **Cargo**
+| Campo | Descrição |
+|-------|-----------|
+| IdCargo | Identificador interno do cargo |
+| ExpressaoCargo | Descrição do cargo (Ex.: Governador) |
+| ExpressaoTratamento | Tratamento para o cargo (Ex.: A Sua Excelência o Senhor) |
+| ExpressaoVocativo | Vocativo para o cargo (Ex.: Senhor Governador) |
+
+### **Cidade**
+| Campo | Descrição |
+|-------|-----------|
+| IdCidade | Identificador da cidade |
+| IdEstado | Identificador do estado |
+| IdPais | Identificador do país |
+| Nome | Nome do estado |
+| CodigoIbge | Código do IBGE do estado |
+| SinCapital | S/N - Indica se a cidade é capital |
+| Latitude | Latitude da cidade |
+| Longitude | Longitude da cidade |
+
+### **Contato**
+| Campo | Descrição |
+|-------|-----------|
+| StaOperacao | A–Atualizar, E–Excluir, D–Desativar, R–Reativar |
+| IdContato | Identificador interno do contato |
+| IdTipoContato | Identificar interno do tipo do contato |
+| NomeTipoContato | Nome do tipo do contato |
+| Sigla | Sigla do contato |
+| Nome | Nome do contato |
+| NomeSocial | Nome Social do contato |
+| StaNatureza | F - Pessoa Física, J - Pessoa Jurídica |
+| IdContatoAssociado | Identificador da Pessoa Jurídica associada |
+| NomeContatoAssociado | Nome da Pessoa Jurídica associada |
+| SinEnderecoAssociado | S/N - indica se usa endereço da PJ associada |
+| CnpjAssociado | CNPJ da Pessoa Jurídica associada |
+| Endereco | Endereço do contato |
+| Complemento | Complemento do endereço |
+| Bairro | Bairro do contato |
+| IdCidade | Identificador da cidade |
+| NomeCidade | Nome da cidade |
+| IdEstado | Identificador do estado |
+| SiglaEstado | Sigla do estado |
+| IdPais | Identificador do país |
+| NomePais | Nome do país |
+| Cep | CEP do contato |
+| StaGenero | F - Feminino, M - Masculino |
+| IdCargo | Identificador do cargo |
+| ExpressaoCargo | Cargo do contato |
+| ExpressaoTratamento | Tratamento do contato |
+| ExpressaoVocativo | Vocativo do contato |
+| Cpf | CPF do contato |
+| Cnpj | CNPJ do contato |
+| Rg | RG do contato |
+| OrgaoExpedidor | Órgão Expedidor do RG |
+| Matricula | Matrícula do contato |
+| MatriculaOab | Matrícula OAB do contato |
+| TelefoneFixo | Telefone fixo |
+| TelefoneCelular | Telefone celular |
+| DataNascimento | Data de nascimento |
+| Email | Email do contato |
+| SitioInternet | Sítio na internet |
+| Observacao | Observação associada |
+| NumeroPassaporte | Número do Passaporte |
+| IdPaisPassaporte | País de emissão do passaporte |
+| NomePaisPassaporte | Nome do país de emissão |
+| SinAtivo | S/N - indica se está ativo |
+
+### **DefinicaoControlePrazo**
+| Campo | Descrição |
+|-------|-----------|
+| ProtocoloProcedimento | Número do processo visível para o usuário |
+| DataPrazo | Data para definição do prazo |
+| Dias | Número de dias para definição do prazo |
+| SinDiasUteis | S/N – Se o parâmetro Dias corresponde a dias úteis |
+
+### **DefinicaoMarcador**
+| Campo | Descrição |
+|-------|-----------|
+| ProtocoloProcedimento | Número do processo visível para o usuário |
+| IdMarcador | Identificador do marcador disponível na unidade |
+| Texto | Texto para associação |
+
+### **Destinatario**
+| Campo | Descrição |
+|-------|-----------|
+| Sigla | Sigla do destinatário |
+| Nome | Nome do destinatário |
+| IdContato | Identificador interno do destinatário |
+| Cpf | CPF do destinatário |
+| Cnpj | CNPJ do destinatário |
+
+### **Documento**
+| Campo | Descrição |
+|-------|-----------|
+| Tipo | G = documento gerado, R = documento recebido (externo) |
+| IdProcedimento | Identificador do processo onde será inserido |
+| ProtocoloProcedimento | Número do processo onde será inserido |
+| IdSerie | Identificador do tipo de documento |
+| Numero | Número do documento |
+| NomeArvore | Nome complementar na árvore |
+| DinValor | Valor monetário |
+| Data | Data do documento |
+| Descricao | Descrição do documento |
+| IdTipoConferencia | Identificador do tipo de conferência |
+| SinArquivamento | S/N – Se deve ser arquivado |
+| Remetente | Dados do remetente (estrutura Remetente) |
+| Interessados | Conjunto de interessados |
+| Destinatarios | Conjunto de destinatários |
+| Observacao | Texto da observação da unidade |
+| NomeArquivo | Nome do arquivo |
+| NivelAcesso | 0-público, 1-restrito, 2-sigiloso |
+| IdHipoteseLegal | Identificador da hipótese legal |
+| Conteudo | Conteúdo do arquivo em Base64 |
+| ConteudoSecoes | Conteúdos das seções |
+| ConteudoMTOM | Conteúdo textual ou binário |
+| IdArquivo | Identificador do arquivo |
+| Campos | Campos do formulário |
+| SinBloqueado | S/N - se está bloqueado |
+| IdItemEtapa | Identificador do item do Plano de Trabalho |
+
+### **Estado**
+| Campo | Descrição |
+|-------|-----------|
+| IdEstado | Identificador do estado |
+| IdPais | Identificador do país |
+| Sigla | Sigla do estado |
+| Nome | Nome do estado |
+| CodigoIbge | Código do IBGE do estado |
+
+### **Feriado**
+| Campo | Descrição |
+|-------|-----------|
+| Data | Data do feriado |
+| Descricao | Descrição do feriado |
+
+### **HipoteseLegal**
+| Campo | Descrição |
+|-------|-----------|
+| IdHipoteseLegal | Identificador da hipótese legal |
+| Nome | Nome da hipótese legal |
+| BaseLegal | Descrição da base legal |
+| NivelAcesso | Nível de acesso: 1-restrito, 2-sigiloso |
+
+### **Interessado**
+| Campo | Descrição |
+|-------|-----------|
+| Sigla | Sigla do interessado |
+| Nome | Nome do interessado |
+| IdContato | Identificador interno do interessado |
+| Cpf | CPF do interessado |
+| Cnpj | CNPJ do interessado |
+
+### **Marcador**
+| Campo | Descrição |
+|-------|-----------|
+| IdMarcador | Identificador do marcador |
+| Nome | Nome do marcador |
+| Icone | Ícone do marcador em PNG/Base64 |
+| SinAtivo | S/N - Se está ativo |
+
+### **Observacao**
+| Campo | Descrição |
+|-------|-----------|
+| Descricao | Texto da observação |
+| Unidade | Dados da unidade (estrutura Unidade) |
+
+### **Pais**
+| Campo | Descrição |
+|-------|-----------|
+| IdPais | Identificador do país |
+| Nome | Nome do país |
+
+### **Procedimento**
+| Campo | Descrição |
+|-------|-----------|
+| IdTipoProcedimento | Identificador do tipo de processo |
+| NumeroProtocolo | Número do processo |
+| DataAutuacao | Data de autuação |
+| Especificacao | Especificação do processo |
+| IdTipoPrioridade | Identificador do tipo de prioridade |
+| Assuntos | Assuntos do processo |
+| Interessados | Conjunto de interessados |
+| Observacao | Texto da observação |
+| NivelAcesso | 0-público, 1-restrito, 2-sigiloso |
+| IdHipoteseLegal | Identificador da hipótese legal |
+
+### **ProcedimentoResumido**
+| Campo | Descrição |
+|-------|-----------|
+| IdTipoProcedimento | Identificador do tipo de processo |
+| ProcedimentoFormatado | Número do processo visível |
+| TipoProcedimento | Dados do tipo do processo |
+
+### **ProtocoloBloco**
+| Campo | Descrição |
+|-------|-----------|
+| ProtocoloFormatado | Número do processo ou documento |
+| Identificacao | Tipo do processo ou documento |
+| Assinaturas | Conjunto de assinaturas |
+
+### **Publicacao**
+| Campo | Descrição |
+|-------|-----------|
+| IdPublicacao | Id interno da publicação |
+| IdDocumento | Id interno do documento |
+| StaMotivo | 1=Publicação, 2=Retificação, 3=Republicação, 4=Apostilamento |
+| Resumo | Texto do resumo |
+| IdVeiculoPublicacao | Id interno do veículo |
+| NomeVeiculo | Nome do veículo |
+| StaTipoVeiculo | I=Interno, E=Externo, M=Modulo |
+| Numero | Número da publicação |
+| DataDisponibilizacao | Data da disponibilização |
+| DataPublicacao | Data da publicação |
+| Estado | A=Agendado ou P=Publicado |
+| ImprensaNacional | Dados da Imprensa Nacional |
+
+### **PublicacaoImprensaNacional**
+| Campo | Descrição |
+|-------|-----------|
+| IdVeiculo | Id interno do veículo |
+| SiglaVeiculo | Sigla do veículo (ex.: DOU) |
+| DescricaoVeiculo | Descrição do veículo |
+| Pagina | Página da publicação |
+| IdSecao | Id interno da seção |
+| Secao | Seção da publicação |
+| Data | Data da publicação |
+
+### **Remetente**
+| Campo | Descrição |
+|-------|-----------|
+| Sigla | Sigla do remetente |
+| Nome | Nome do remetente |
+| IdContato | Identificador interno |
+| Cpf | CPF do remetente |
+| Cnpj | CNPJ do remetente |
+
+### **RetornoConsultaBloco**
+| Campo | Descrição |
+|-------|-----------|
+| IdBloco | Número do bloco |
+| Unidade | Dados da unidade |
+| Usuario | Dados do usuário |
+| Descrição | Descrição do bloco |
+| Tipo | Tipo do bloco |
+| Estado | Estado do bloco |
+| SinPrioridade | S/N – Se é prioritário |
+| SinRevisao | S/N – Se foi revisado |
+| UsuarioAtribuicao | Usuário atribuído |
+| UnidadesDisponibilizacao | Unidades com acesso |
+| Protocolos | Processos ou documentos |
+
+### **RetornoConsultaDocumento**
+| Campo | Descrição |
+|-------|-----------|
+| IdProcedimento | Id interno do processo |
+| ProcedimentoFormatado | Número do processo |
+| IdDocumento | Id interno do documento |
+| DocumentoFormatado | Número do documento |
+| NivelAcessoLocal | Nível no cadastro |
+| NivelAcessoGlobal | Nível geral aplicado |
+| LinkAcesso | Link para acesso |
+| Serie | Dados do tipo |
+| Numero | Número do documento |
+| NomeArvore | Nome na árvore |
+| DinValor | Valor monetário |
+| Descricao | Descrição |
+| Data | Data de geração |
+| UnidadeElaboradora | Unidade que gerou |
+| AndamentoGeracao | Andamento de geração |
+| Assinaturas | Conjunto de assinaturas |
+| Publicacao | Informações de publicação |
+| Campos | Campos do formulário |
+| Blocos | Blocos que contém o doc |
+
+### **RetornoConsultaProcedimento**
+| Campo | Descrição |
+|-------|-----------|
+| IdProcedimento | Id interno do processo |
+| ProcedimentoFormatado | Número do processo |
+| Especificacao | Especificação |
+| DataAutuacao | Data de autuação |
+| NivelAcessoLocal | Nível no cadastro |
+| NivelAcessoGlobal | Nível geral aplicado |
+| LinkAcesso | Link para acesso |
+| TipoProcedimento | Dados do tipo |
+| TipoPrioridade | Dados da prioridade |
+| AndamentoGeracao | Andamento de geração |
+| AndamentoConclusao | Andamento de conclusão |
+| UltimoAndamento | Último andamento |
+| UnidadesProcedimentoAberto | Unidades onde está aberto |
+| Assuntos | Assuntos do processo |
+| Interessados | Interessados |
+| Observacoes | Observações das unidades |
+| ProcedimentosRelacionados | Processos relacionados |
+| ProcedimentosAnexados | Processos anexados |
+
+### **RetornoConsultaPublicacao**
+| Campo | Descrição |
+|-------|-----------|
+| Publicacao | Dados da publicação |
+| Andamento | Andamento de publicação |
+| Assinaturas | Assinaturas do documento |
+
+### **RetornoEnvioEmail**
+| Campo | Descrição |
+|-------|-----------|
+| IdDocumento | Id interno do e-mail |
+| DocumentoFormatado | Número do e-mail |
+| LinkAcesso | Link para acesso |
+
+### **RetornoGeracaoProcedimento**
+| Campo | Descrição |
+|-------|-----------|
+| IdProcedimento | Id interno do processo |
+| ProcedimentoFormatado | Número do processo |
+| LinkAcesso | Link para acesso |
+| RetornoInclusaoDocumentos | Documentos incluídos |
+
+### **RetornoInclusaoDocumento**
+| Campo | Descrição |
+|-------|-----------|
+| IdDocumento | Id interno do documento |
+| DocumentoFormatado | Número do documento |
+| LinkAcesso | Link para acesso |
+
+### **SecaoDocumento**
+| Campo | Descrição |
+|-------|-----------|
+| Nome | Nome da seção |
+| Conteudo | Conteúdo da seção |
+
+### **Serie**
+| Campo | Descrição |
+|-------|-----------|
+| IdSerie | Identificador do tipo |
+| Nome | Nome do tipo |
+| Aplicabilidade | T=Todos, I=Internos, E=Externos, F=Formulários |
+
+### **TipoProcedimento**
+| Campo | Descrição |
+|-------|-----------|
+| IdTipoProcedimento | Identificador do tipo |
+| Nome | Nome do tipo |
+
+### **TipoConferencia**
+| Campo | Descrição |
+|-------|-----------|
+| IdTipoConferencia | Identificador |
+| Descricao | Descrição |
+
+### **TipoPrioridade**
+| Campo | Descrição |
+|-------|-----------|
+| IdTipoPrioridade | Identificador |
+| Nome | Nome |
+
+### **Unidade**
+| Campo | Descrição |
+|-------|-----------|
+| IdUnidade | Identificador |
+| Sigla | Sigla |
+| Descricao | Descrição |
+| SinProtocolo | S/N - é protocolo |
+| SinArquivamento | S/N - é arquivo |
+| SinOuvidoria | S/N - é ouvidoria |
+
+### **UnidadeProcedimentoAberto**
+| Campo | Descrição |
+|-------|-----------|
+| Unidade | Dados da Unidade |
+| UsuarioAtribuicao | Usuário atribuído |
+
+### **Usuario**
+| Campo | Descrição |
+|-------|-----------|
+| IdUsuario | Identificador |
+| Sigla | Sigla |
+| Nome | Nome |
+
+---
+
+## 2. SERVIÇOS SEI - ENTRADA/SAÍDA
+
+### **adicionarArquivo**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- Nome
+- Tamanho
+- Hash
+- Conteudo
+
+**Saída:**
+- Retorna o identificador do arquivo criado
+
+### **adicionarConteudoArquivo**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdArquivo
+- Conteudo
+
+**Saída:**
+- Retorna o identificador do arquivo criado
+
+### **agendarPublicacao**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdDocumento
+- ProtocoloDocumento
+- StaMotivo
+- IdVeiculoPublicacao
+- DataDisponibilizacao
+- Resumo
+- ImprensaNacional
+
+**Saída:**
+- Retorna o identificador interno da publicação
+
+### **alterarPublicacao**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdPublicacao
+- IdDocumento
+- ProtocoloDocumento
+- StaMotivo
+- IdVeiculoPublicacao
+- DataDisponibilizacao
+- Resumo
+- ImprensaNacional
+
+**Saída:**
+- Retorna true
+
+### **atribuirProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+- IdUsuario
+- SinReabrir
+
+**Saída:**
+- Retorna true
+
+### **anexarProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimentoPrincipal
+- ProtocoloProcedimentoAnexado
+
+**Saída:**
+- Retorna true
+
+### **atualizarContatos**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- Contatos
+
+**Saída:**
+- Retorna true
+
+### **bloquearProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+
+**Saída:**
+- Retorna true
+
+### **cancelarAgendamentoPublicacao**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdPublicacao
+- IdDocumento
+- ProtocoloDocumento
+
+**Saída:**
+- Retorna true
+
+### **cancelarDisponibilizacaoBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdBloco
+
+**Saída:**
+- Retorna true
+
+### **cancelarDocumento**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloDocumento
+- Motivo
+
+**Saída:**
+- Retorna true
+
+### **concluirBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdBloco
+
+**Saída:**
+- Retorna true
+
+### **concluirControlePrazo**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocolosProcedimentos
+
+**Saída:**
+- Retorna true
+
+### **concluirProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+
+**Saída:**
+- Retorna true
+
+### **confirmarDisponibilizacaoPublicacao**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdVeiculoPublicacao
+- DataDisponibilizacao
+- DataPublicacao
+- Numero
+- IdDocumentos
+
+**Saída:**
+- Retorna true
+
+### **consultarBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdBloco
+- SinRetornarProtocolos
+
+**Saída:**
+- Uma ocorrência da estrutura RetornoConsultaBloco
+
+### **consultarDocumento**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloDocumento
+- SinRetornarAndamentoGeracao
+- SinRetornarAssinaturas
+- SinRetornarPublicacao
+- SinRetornarCampos
+- SinRetornarBlocos
+
+**Saída:**
+- Uma ocorrência da estrutura RetornoConsultaDocumento
+
+### **consultarProcedimento**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+- SinRetornarAssuntos
+- SinRetornarInteressados
+- SinRetornarObservacoes
+- SinRetornarAndamentoGeracao
+- SinRetornarAndamentoConclusao
+- SinRetornarUltimoAndamento
+- SinRetornarUnidadesProcedimentoAberto
+- SinRetornarProcedimentosRelacionados
+- SinRetornarProcedimentosAnexados
+
+**Saída:**
+- Uma ocorrência da estrutura RetornoConsultaProcedimento
+
+### **consultarProcedimentoIndividual**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdOrgaoProcedimento
+- IdTipoProcedimento
+- IdOrgaoUsuario
+- SiglaUsuario
+
+**Saída:**
+- Uma ocorrência da estrutura ProcedimentoResumido
+
+### **consultarPublicacao**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdPublicacao
+- IdDocumento
+- ProtocoloDocumento
+- SinRetornarAndamento
+- SinRetornarAssinaturas
+
+**Saída:**
+- Uma ocorrência da estrutura RetornoConsultaPublicacao
+
+### **definirControlePrazo**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- Definicoes
+
+**Saída:**
+- Retorna true
+
+### **definirMarcador**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- Definicoes
+
+**Saída:**
+- Retorna true
+
+### **desanexarProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimentoPrincipal
+- ProtocoloProcedimentoAnexado
+- Motivo
+
+**Saída:**
+- Retorna true
+
+### **desbloquearProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+
+**Saída:**
+- Retorna true
+
+### **devolverBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdBloco
+
+**Saída:**
+- Retorna true
+
+### **disponibilizarBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdBloco
+
+**Saída:**
+- Retorna true
+
+### **enviarEmail**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+- De
+- Para
+- CCO
+- Assunto
+- Mensagem
+- IdDocumentos
+
+**Saída:**
+- Uma ocorrência da estrutura RetornoEnvioEmail
+
+### **enviarProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+- UnidadesDestino
+- SinManterAbertoUnidade
+- SinRemoverAnotacao
+- SinEnviarEmailNotificacao
+- DataRetornoProgramado
+- DiasRetornoProgramado
+- SinDiasUteisRetornoProgramado
+- SinReabrir
+
+**Saída:**
+- Retorna true
+
+### **excluirBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdBloco
+
+**Saída:**
+- Retorna true
+
+### **excluirDocumento**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloDocumento
+
+**Saída:**
+- Retorna true
+
+### **excluirProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+
+**Saída:**
+- Retorna true
+
+### **gerarBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- Tipo
+- Descricao
+- UnidadesDisponibilizacao
+- Documentos
+- SinDisponibilizar
+
+**Saída:**
+- Retorna o número do bloco gerado
+
+### **gerarProcedimento**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- Procedimento
+- Documentos
+- ProcedimentosRelacionados
+- UnidadesEnvio
+- SinManterAbertoUnidade
+- SinEnviarEmailNotificacao
+- DataRetornoProgramado
+- DiasRetornoProgramado
+- SinDiasUteisRetornoProgramado
+- IdMarcador
+- TextoMarcador
+- DataControlePrazo
+- DiasControlePrazo
+- SinDiasUteisControlePrazo
+
+**Saída:**
+- Uma ocorrência da estrutura RetornoGeracaoProcedimento
+
+### **incluirDocumento**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- Documento
+
+**Saída:**
+- Uma ocorrência da estrutura RetornoInclusaoDocumento
+
+### **incluirDocumentoBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdBloco
+- ProtocoloDocumento
+- Anotacao
+
+**Saída:**
+- Retorna true
+
+### **incluirProcessoBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdBloco
+- ProtocoloProcedimento
+- Anotacao
+
+**Saída:**
+- Retorna true
+
+### **lancarAndamento**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+- IdTarefa
+- IdTarefaModulo
+- Atributos
+
+**Saída:**
+- Retorna o andamento gerado (estrutura Andamento)
+
+### **listarAndamentos**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+- SinRetornarAtributos
+- Andamentos
+- Tarefas
+- TarefasModulos
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Andamento
+
+### **listarAndamentosMarcadores**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+- Marcadores
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura AndamentoMarcador
+
+### **listarCargos**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdCargo
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Cargo
+
+### **listarCidades**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdPais
+- IdEstado
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Cidade
+
+### **listarContatos**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdTipoContato
+- PaginaRegistros
+- PaginaAtual
+- Sigla
+- Nome
+- CPF
+- CNPJ
+- Matricula
+- IdContatos
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Contato
+
+### **listarEstados**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdPais
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Estado
+
+### **listarExtensoesPermitidas**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdArquivoExtensao
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura ArquivoExtensao
+
+### **listarFeriados**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdOrgao
+- DataInicial
+- DataFinal
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Feriado
+
+### **listarHipotesesLegais**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- NivelAcesso
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura HipoteseLegal
+
+### **listarMarcadoresUnidade**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Marcador
+
+### **listarPaises**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Pais
+
+### **listarSeries**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdTipoProcedimento
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Serie
+
+### **listarTiposConferencia**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura TipoConferencia
+
+### **listarTiposPrioridade**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura TipoPrioridade
+
+### **listarTiposProcedimento**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdSerie
+- SinIndividual
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura TipoProcedimento
+
+### **listarTiposProcedimentoOuvidoria**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura TipoProcedimento
+
+### **listarUnidades**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdTipoProcedimento
+- IdSerie
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Unidade
+
+### **listarUsuarios**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdUsuario
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Usuario
+
+### **reabrirBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdBloco
+
+**Saída:**
+- Retorna true
+
+### **reabrirProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+
+**Saída:**
+- Retorna true
+
+### **registrarAnotacao**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- Anotacoes
+
+**Saída:**
+- Retorna true
+
+### **registrarOuvidoria**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdOrgao
+- Nome
+- NomeSocial
+- Email
+- Cpf
+- Rg
+- OrgaoExpedidor
+- Telefone
+- Estado
+- Cidade
+- IdTipoProcedimento
+- Processos
+- SinRetorno
+- Mensagem
+- AtributosAdicionais
+
+**Saída:**
+- Retorna ocorrência da estrutura ProcedimentoResumido
+
+### **relacionarProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento1
+- ProtocoloProcedimento2
+
+**Saída:**
+- Retorna true
+
+### **removerControlePrazo**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocolosProcedimentos
+
+**Saída:**
+- Retorna true
+
+### **removerRelacionamentoProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento1
+- ProtocoloProcedimento2
+
+**Saída:**
+- Retorna true
+
+### **removerSobrestamentoProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+
+**Saída:**
+- Retorna true
+
+### **retirarDocumentoBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdBloco
+- ProtocoloDocumento
+
+**Saída:**
+- Retorna true
+
+### **retirarProcessoBloco**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- IdBloco
+- ProtocoloProcedimento
+
+**Saída:**
+- Retorna true
+
+### **sobrestarProcesso**
+**Entrada:**
+- SiglaSistema
+- IdentificacaoServico
+- IdUnidade
+- ProtocoloProcedimento
+- ProtocoloProcedimentoVinculado
+- Motivo
+
+**Saída:**
+- Retorna true
+
+---
+
+## 3. SERVIÇOS SIP - ENTRADA/SAÍDA
+
+### **Usuario (Estrutura SIP)**
+| Campo | Descrição |
+|-------|-----------|
+| StaOperacao | C–Cadastrar, A–Atualizar, E–Excluir, D–Desativar, R–Reativar |
+| IdOrigem | ID associado com o usuário no sistema de origem |
+| IdOrgao | ID do órgão do usuário |
+| Sigla | Sigla do usuário |
+| Nome | Nome do usuário (Registro Civil) |
+| NomeSocial | Nome do usuário (Social) |
+| Cpf | CPF do usuário |
+| Email | Email Institucional do usuário |
+
+### **Permissao (Estrutura SIP)**
+| Campo | Descrição |
+|-------|-----------|
+| StaOperacao | A–Atualizar, E–Excluir |
+| IdSistema | ID do sistema no SIP |
+| IdOrgaoUsuario | ID do órgão do usuário no SIP |
+| IdUsuario | ID do usuário no SIP |
+| IdOrigemUsuario | ID do usuário no sistema origem |
+| IdOrgaoUnidade | ID do órgão da unidade no SIP |
+| IdUnidade | ID da unidade no SIP |
+| IdOrigemUnidade | ID da unidade no sistema origem |
+| IdPerfil | ID do perfil no SIP |
+| DataInicial | Data de início da permissão |
+| DataFinal | Data de término da permissão |
+| SinSubunidades | S/N - estende às subunidades |
+
+### **listarPermissao (SIP)**
+**Entrada:**
+- Chave de Acesso
+- IdSistema
+- IdOrgaoUsuario
+- IdUsuario
+- IdOrigemUsuario
+- IdOrgaoUnidade
+- IdUnidade
+- IdOrigemUnidade
+- IdPerfil
+
+**Saída:**
+- Um conjunto de ocorrências da estrutura Permissao
+
+### **replicarPermissao (SIP)**
+**Entrada:**
+- Chave de Acesso
+- Permissoes
+
+**Saída:**
+- Retorna true se teve sucesso ou uma exceção
+
+### **replicarUsuario (SIP)**
+**Entrada:**
+- Chave de Acesso
+- Usuarios
+- SinConsiderarOrgao
+
+**Saída:**
+- Retorna true se teve sucesso ou uma exceção
+
+---
+
+## 4. SERVIÇOS ACESSADOS EM OUTROS SISTEMAS
+
+### **listarCargoFuncao**
+**Entrada:**
+- IdOrgao
+- IdOrigem
+- Sigla
+
+**Saída:**
+- CargosFuncoes (lista de cargos e funções)

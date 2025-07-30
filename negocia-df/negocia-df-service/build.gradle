@@ -1,0 +1,31 @@
+dependencies {
+	api project(":modules:negocia-df:negocia-df-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+	compileOnly group: "com.liferay", name: "com.liferay.dispatch.api"
+	compileOnly project(":modules:sei-integration:sei-integration-api")
+
+	compileInclude group: 'commons-io', name: 'commons-io', version: '2.13.0'
+
+	compileInclude group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.3'
+	compileInclude group: 'com.itextpdf.tool', name: 'xmlworker', version: '5.5.13.3'
+	implementation group: 'com.itextpdf', name: 'itext7-core', version: '8.0.1', ext: 'pom'
+	implementation group: 'com.itextpdf', name: 'html2pdf', version: '5.0.1'
+	implementation group: 'com.itextpdf', name: 'commons', version: '8.0.1'
+
+	compileInclude group: 'org.xhtmlrenderer', name: 'flying-saucer-pdf-itext5', version: '9.1.20'
+	compileInclude group: 'com.google.zxing', name: 'core', version: '3.4.0'
+	compileOnly group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.2'
+	compileOnly group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+	compileOnly group: "com.fasterxml.jackson.jaxrs", name: "jackson-jaxrs-json-provider", version: "2.9.8"
+
+	compileOnly group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.12.RELEASE'
+	compileInclude group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time', version: '3.0.4.RELEASE'
+}
+
+buildService {
+	apiDir = "../negocia-df-api/src/main/java"
+	testDir = "../negocia-df-test/src/testIntegration/java"
+}
+
+group = "negocia.df"

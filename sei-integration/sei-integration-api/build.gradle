@@ -1,0 +1,23 @@
+repositories {
+	flatDir {
+		dirs 'libs'
+	}
+}
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+
+	implementation name: 'commons-logging-1.0.4'
+
+	// https://mvnrepository.com/artifact/com.sun/jimi
+	implementation("com.sun:jimi:1.0")
+	implementation name: 'logkit-1.0.1'
+	implementation name: 'log4j-1.2.8'
+	implementation name: 'avalon-framework-4.1.5'
+	implementation name: 'commons-discovery-0.2'
+	implementation name: 'axis-patched'
+	implementation name: 'activation-1.1'
+	implementation name: 'axis-ant'
+	implementation name: 'jaxrpc'
+	implementation name: 'saaj'
+	implementation name: 'wsdl4j-1.5.1'
+}

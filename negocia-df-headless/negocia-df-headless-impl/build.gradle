@@ -1,0 +1,9 @@
+dependencies {
+	api project(":modules:negocia-df-headless:negocia-df-headless-api")
+	compileOnly project(":modules:negocia-df:negocia-df-api")
+	compileOnly project(":modules:sitaf-integration:sitaf-integration-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+group = "br.com.seatecnologia.gdf.negocia.headless"

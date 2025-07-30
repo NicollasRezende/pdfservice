@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="br.com.seatecnologia.gdf.negocia">
+	<namespace>GDF</namespace>
+	<!-- =================== PROPOSTA =================== -->
+	<entity name="Proposta" local-service="true" remote-service="true" uuid="true">
+		<column name="propostaId" primary="true" type="long" />
+
+		<column name="groupId" type="long" />
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String"/>
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<column name="tipoProposta" type="String" />
+		<column name="editalId" type="long" />
+
+		<column name="qualificacaoId" type="long" />
+
+		<column name="administradorJudicialId" type="long" />
+		<column name="advogadoId" type="long" />
+
+		<column name="fundamentacaoPedidoId" type="long" />
+
+		<column name="procuracao" type="long" />
+		<column name="cpfCnpj" type="String" />
+		<column name="status" type="String" />
+		<column name="numeroProtocoloSei" type="String" />
+		<column name="protocolo" type="String" />
+		<column name="documentosCompletosURL" type="String" />
+		<column name="propostaPaiId" type="long" />
+
+		<!-- Finder methods -->
+		<finder name="CpfCnpj" return-type="Collection">
+			<finder-column name="cpfCnpj" />
+		</finder>
+	</entity>
+
+	<!-- =================== EDITAL =================== -->
+	<entity name="Edital" local-service="true" remote-service="true" uuid="true">
+		<column name="editalId" primary="true" type="long" />
+		<column name="titulo" type="String" />
+		<column name="descricao" type="String" />
+		<column name="arquivo" type="long" />
+		<column name="dataInicio" type="Date" />
+		<column name="dataFim" type="Date" />
+	</entity>
+
+	<!-- =================== QUALIFICACAO COMPLETA =================== -->
+	<entity name="QualificacaoCompleta" local-service="true" remote-service="true" uuid="true">
+		<column name="qualificacaoId" primary="true" type="long" />
+
+		<column name="tipoPessoa" type="String" />
+		<column name="nomeRazaoSocial" type="String" />
+		<column name="nomeFantasia" type="String" />
+		<column name="representanteLegal" type="String" />
+		<column name="cpfCnpj" type="String" />
+		<column name="domicilioFiscal" type="String" />
+		<column name="numeroCfdf" type="String" />
+		<column name="email" type="String" />
+		<column name="telefone" type="String" />
+		<column name="whatsapp" type="String" />
+		<column name="enderecoPostalId" type="long" />
+	</entity>
+
+	<entity name="DemaisPartes" local-service="true" remote-service="true" uuid="true">
+		<column name="demaisPartesId" primary="true" type="long" />
+
+		<column name="qualificacaoId" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="tipoParte" type="String" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== ENDERECO =================== -->
+	<entity name="Endereco" local-service="true" remote-service="true" uuid="true">
+		<column name="enderecoId" primary="true" type="long" />
+
+		<column name="cep" type="String" />
+		<column name="endereco" type="String" />
+		<column name="numero" type="String" />
+		<column name="estado" type="String" />
+		<column name="municipio" type="String" />
+		<column name="bairro" type="String" />
+		<column name="complemento" type="String" />
+	</entity>
+
+	<!-- =================== ADMINISTRADOR JUDICIAL =================== -->
+	<entity name="AdministradorJudicial" local-service="true" remote-service="true" uuid="true">
+		<column name="administradorJudicialId" primary="true" type="long" />
+
+		<column name="qualificacaoId" type="long" />
+		<column name="regimeFalencia" type="boolean" />
+		<column name="recuperacao" type="String" />
+		<column name="numeroProcesso" type="String" />
+		<column name="anexoRecuperacao" type="long" />
+	</entity>
+
+	<!-- =================== ADVOGADO =================== -->
+	<entity name="Advogado" local-service="true" remote-service="true" uuid="true">
+		<column name="advogadoId" primary="true" type="long" />
+
+		<column name="qualificacaoId" type="long" />
+		<column name="numeroOab" type="String" />
+		<column name="seccional" type="String" />
+		<column name="carteirinhaOAB" type="long" />
+	</entity>
+
+	<entity name="Procuracao" local-service="true" remote-service="true" uuid="true">
+		<column name="procuracaoId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="procuracao" type="long" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== FUNDAMENTACAO PEDIDO =================== -->
+	<entity name="FundamentacaoPedido" local-service="true" remote-service="true" uuid="true">
+		<column name="fundamentacaoId" primary="true" type="long" />
+
+		<column name="propostaId" type="long" />
+		<column name="fundamentacaoPedido" type="String" />
+
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== DOCUMENTOS COMPROBATÓRIOS =================== -->
+	<entity name="DocumentoComprobatorio" local-service="true" remote-service="true" uuid="true">
+		<column name="documentoId" primary="true" type="long" />
+		<column name="fundamentacaoId" type="long" />
+		<column name="fileEntryId" type="long" />
+
+		<finder name="FundamentacaoId" return-type="Collection">
+			<finder-column name="fundamentacaoId"/>
+		</finder>
+	</entity>
+
+	<entity name="IdentificacaoDebitos" local-service="true" remote-service="true" uuid="true">
+		<column name="identificacaoDebitosId" primary="true" type="long" />
+
+		<column name="fundamentacaoId" type="long" />
+		<column name="natureza" type="String" />
+		<column name="situacao" type="String" />
+		<column name="inscricaoDividaAtiva" type="String" />
+		<column name="garantidoJudicialmente" type="String" />
+
+		<finder name="FundamentacaoId" return-type="Collection">
+			<finder-column name="fundamentacaoId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== GARANTIAS =================== -->
+	<entity name="Garantia" local-service="true" remote-service="true" uuid="true">
+		<column name="garantiaId" primary="true" type="long" />
+
+		<column name="propostaId" type="long" />
+		<column name="tipoGarantia" type="String" />
+		<column name="tipoDevedor" type="String" />
+		<column name="outras" type="String" />
+		<column name="descricaoBem" type="String" />
+		<column name="proprietarioQualificacao" type="long" />
+		<column name="valorEstimado" type="double" />
+		<column name="dadosRegistroId" type="long" />
+		<column name="localizacao" type="String" />
+		<column name="declaracaoAnuencia" type="boolean" />
+		<column name="declaracao" type="long" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<entity name="DadosRegistro" local-service="true" remote-service="true" uuid="true">
+		<column name="dadosRegistroId" primary="true" type="long" />
+		<column name="garantiaId" type="long" />
+		<column name="matriculaImovel" type="String" />
+		<column name="cartorioRegistro" type="String" />
+		<column name="renavam" type="String" />
+		<column name="localizacao" type="String" />
+		<finder name="GarantiaId" return-type="DadosRegistro">
+			<finder-column name="garantiaId"/>
+		</finder>
+	</entity>
+
+	<entity name="AnexosOutros" local-service="true" remote-service="true" uuid="true">
+		<column name="anexosOutrosId" primary="true" type="long" />
+		<column name="dadosRegistroId" type="long" />
+		<column name="outrosAnexo" type="long" />
+		<finder name="DadosRegistroId" return-type="Collection">
+			<finder-column name="dadosRegistroId"/>
+		</finder>
+	</entity>
+
+	<entity name="GarantiaProposta" local-service="true" remote-service="true" uuid="true">
+		<column name="garantiaPropostaId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="garantiaId" type="long" />
+	</entity>
+
+	<entity name="Declaracao" local-service="true" remote-service="true" uuid="true">
+		<column name="declaracaoId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="cumpreCompromissos" type="boolean" />
+		<column name="naoAlienacaoBensSemComunicacao" type="boolean" />
+		<column name="reconheceGrupoOuSucessao" type="boolean" />
+		<column name="compromissoConfidencialidade" type="boolean" />
+		<column name="cienciaProcesso" type="boolean" />
+		<column name="abusoTransacao" type="boolean" />
+		<column name="impugnacaoRecursos" type="boolean" />
+		<column name="renunciaRecursos" type="boolean" />
+		<column name="peticionamentoProcessos" type="boolean" />
+		<column name="prestacaoInformacoes" type="boolean" />
+		<column name="omissaoInformacoes" type="boolean" />
+		<column name="manutencaoGarantias" type="boolean" />
+
+		<!-- Finder methods -->
+		<finder name="PropostaId" return-type="Declaracao">
+			<finder-column name="propostaId" />
+		</finder>
+
+	</entity>
+
+	<!-- =================== AÇÕES JUDICIAIS =================== -->
+	<entity name="AcaoJudicial" local-service="true" remote-service="true" uuid="true">
+
+		<column name="acaoId" primary="true" type="long" />
+		<column name="orgaoTribunal" type="String" />
+		<column name="numeroProcesso" type="String" />
+		<column name="unidadeVara" type="String" />
+		<column name="parteAutora" type="String" />
+		<column name="parteRe" type="String" />
+		<column name="observacoes" type="String" />
+		<column name="propostaId" type="long" />
+
+		<!-- Finder methods -->
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId" />
+		</finder>
+
+	</entity>
+
+	<!-- =================== AÇÕES JUDICIAIS =================== -->
+	<entity name="AcaoJudicialProposta" local-service="true" remote-service="true" uuid="true">
+		<column name="acaoPropostaId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="acaoId" type="long" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== DEMONSTRAÇÕES CONTÁBEIS =================== -->
+	<entity name="DemonstracaoContabil" local-service="true" remote-service="true" uuid="true">
+
+		<column name="demonstracaoId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="fileEntryId" type="long" />
+		<column name="tipoDocumento" type="int" />
+
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== RELAÇÃO DE CREDORES =================== -->
+	<entity name="RelacaoCredor" local-service="true" remote-service="true" uuid="true">
+
+		<column name="credorId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="nomeCredor" type="String" />
+		<column name="naturezaCredito" type="String" />
+		<column name="classificacaoCredito" type="String" />
+		<column name="valorAtualizado" type="double" />
+		<column name="referenciaContabil" type="String" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== RELAÇÃO DE CREDORES =================== -->
+	<entity name="CredorProposta" local-service="true" remote-service="true" uuid="true">
+		<column name="credorPropostaId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="credorId" type="long" />
+
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<entity name="BensDireitosRequerente" local-service="true" remote-service="true" uuid="true">
+		<column name="bemId" primary="true" type="long" />
+
+		<column name="propostaId" type="long" />
+		<column name="descricao" type="String" />
+		<column name="localizacaoDestinacao" type="String" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<entity name="BensDireitosLaudo" local-service="true" remote-service="true" uuid="true">
+		<column name="bensDireitosLaudoId" primary="true" type="long" />
+		<column name="bemId" type="long" />
+		<column name="laudoAvaliacao" type="long" />
+	</entity>
+
+	<!-- =================== BENS DIREITOS ADICIONAIS =================== -->
+	<entity name="BemDireitoAdicional" local-service="true" remote-service="true" uuid="true">
+		<column name="bemId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="descricao" type="String" />
+		<column name="localizacao" type="String" />
+		<column name="destinacao" type="String" />
+		<column name="laudoAvaliacao" type="String" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== COMPROVANTE HONORÁRIOS =================== -->
+	<entity name="ComprovanteHonorario" local-service="true" remote-service="true" uuid="true">
+		<column name="comprovanteId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="valorPago" type="double" />
+		<column name="dataPagamento" type="Date" />
+		<column name="fileEntryId" type="long" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== CRÉDITOS TRANSACIONADOS =================== -->
+	<entity name="CreditoTransacionado" local-service="true" remote-service="true" uuid="true">
+		<column name="creditoId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="numeroInscricao" type="String" />
+		<column name="codigoReceita" type="String" />
+		<column name="dataInscricao" type="Date" />
+		<column name="valorAtualizado" type="double" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== CONCESSÕES DF =================== -->
+	<entity name="ConcessaoDf" local-service="true" remote-service="true" uuid="true">
+		<column name="concessaoId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="percentualDescontoJuros" type="double" />
+		<column name="percentualDescontoPrincipal" type="double" />
+		<column name="observacoes" type="String" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== ENCARGOS =================== -->
+	<entity name="Encargo" local-service="true" remote-service="true" uuid="true">
+		<column name="encargoId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="valorEncargos" type="double" />
+		<column name="descricaoEncargos" type="String" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== PARCELAMENTO =================== -->
+	<entity name="Parcelamento" local-service="true" remote-service="true" uuid="true">
+		<column name="parcelamentoId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="numeroParcelas" type="int" />
+		<column name="valorEntrada" type="double" />
+		<column name="dataPrimeiraParcela" type="Date" />
+		<column name="valorPrimeiraParcela" type="double" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+
+	<!-- =================== TERMO ASSINADO =================== -->
+	<entity name="TermoAssinado" local-service="true" remote-service="true" uuid="true">
+		<column name="termoId" primary="true" type="long" />
+		<column name="propostaId" type="long" />
+		<column name="urlTermo" type="String" />
+		<column name="arquivoPdf" type="String" />
+		<column name="parte" type="String" />
+		<finder name="PropostaId" return-type="Collection">
+			<finder-column name="propostaId"/>
+		</finder>
+	</entity>
+</service-builder>

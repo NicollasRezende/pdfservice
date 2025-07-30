@@ -1,0 +1,6 @@
+Bundle-Name: negocia-df-headless-api
+Bundle-SymbolicName: br.com.seatecnologia.gdf.negocia.headless.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	br.com.seatecnologia.gdf.negocia.headless.dto.v1_0,\
+	br.com.seatecnologia.gdf.negocia.headless.resource.v1_0

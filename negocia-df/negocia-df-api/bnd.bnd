@@ -1,0 +1,15 @@
+Bundle-Name: negocia-df-api
+Bundle-SymbolicName: br.com.seatecnologia.gdf.negocia.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	br.com.seatecnologia.gdf.negocia.exception,\
+	br.com.seatecnologia.gdf.negocia.model,\
+	br.com.seatecnologia.gdf.negocia.service,\
+	br.com.seatecnologia.gdf.negocia.context,\
+	br.com.seatecnologia.gdf.negocia.constants,\
+	br.com.seatecnologia.gdf.negocia.configuration,\
+	br.com.seatecnologia.gdf.negocia.service.persistence,\
+	br.com.seatecnologia.gdf.negocia.service.permission,\
+br.com.seatecnologia.gdf.negocia.enums
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../negocia-df-service/service.xml

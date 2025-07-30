@@ -1,0 +1,35 @@
+### 🧠 **Objetivo geral**
+
+Automatizar a criação de procedimentos no SEI a partir de propostas, tanto via **agendamento diário (scheduler)** quanto via **chamada direta (endpoint)**.
+
+
+### 🔁 **Scheduler**
+
+* Roda automaticamente todos os dias.
+* Função:
+
+  1. Buscar todas as propostas **criadas no dia atual**.
+  2. Para cada proposta, **criar um procedimento no SEI**.
+  3. Chamar a **integração do Lucas** para realizar a criação no SEI.
+  4. Após a criação, **atualizar a proposta** com os dados necessários (ex: número do procedimento, status etc).
+
+> **Obs:** Se quiser adiantar a execução do scheduler manualmente, é possível chamar ele forçadamente (útil para testes ou execuções fora do horário agendado).
+
+
+### 🔗 **Endpoint (chamada manual)**
+
+* Permite acionar a criação de procedimento para uma proposta específica.
+* URL: `/integracao/sei/{propostaId}` (exemplo)
+* Método: `POST`
+* Parâmetro: `propostaId`
+* Comportamento:
+
+  1. Buscar a proposta pelo ID fornecido.
+  2. Chamar a integração do Lucas para criar o procedimento no SEI.
+  3. Atualizar a proposta após a criação.
+* Respostas:
+
+  * `200 OK` se tudo correr bem.
+  * `400 Bad Request` genérico em caso de erro (ex: proposta não encontrada, erro na integração, etc).
+
+
