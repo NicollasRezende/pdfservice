@@ -1,0 +1,4 @@
+Bundle-Name: edital-admin-web
+Bundle-SymbolicName: br.com.seatecnologia.gdf.edital.admin.web
+Bundle-Version: 1.0.0
+Export-Package: br.com.seatecnologia.gdf.edital.admin.web.internal.constants

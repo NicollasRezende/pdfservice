@@ -1,9 +1,0 @@
-apiDir: "../negocia-df-headless-api/src/main/java"
-apiPackagePath: "br.com.seatecnologia.gdf.negocia.headless"
-application:
-    baseURI: "/negocia-df-headless"
-    className: "NegociaDfHeadlessApplication"
-    name: "NegociaDfHeadless"
-author: "sabrina"
-clientDir: "../negocia-df-headless-client/src/main/java"
-testDir: "../negocia-df-headless-test/src/testIntegration/java"
