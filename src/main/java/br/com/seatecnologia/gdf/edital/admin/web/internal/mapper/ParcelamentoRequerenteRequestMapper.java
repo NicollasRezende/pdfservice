@@ -6,9 +6,6 @@ import org.osgi.service.component.annotations.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(
-    service = ParcelamentoRequerenteRequestMapper.class
-)
 public class ParcelamentoRequerenteRequestMapper {
 
     public List<ParcelamentoRequerenteRequest> toRequest(String[] parcelamentoDias) {

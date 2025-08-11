@@ -8,7 +8,6 @@ import org.osgi.service.component.annotations.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(service = EnvolvidosTransacaoRequestMapper.class)
 public class EnvolvidosTransacaoRequestMapper {
 
     public EnvolvidosTransacaoRequest toRequest(String envolvido) {

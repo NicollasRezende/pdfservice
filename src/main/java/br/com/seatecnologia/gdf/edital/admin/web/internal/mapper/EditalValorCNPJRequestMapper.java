@@ -6,9 +6,6 @@ import org.osgi.service.component.annotations.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(
-    service = EditalValorCNPJRequestMapper.class
-)
 public class EditalValorCNPJRequestMapper {
 
     public List<EditalValorCNPJRequest> toRequest(String[] valorMinimoCNPJ) {

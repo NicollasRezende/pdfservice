@@ -1,13 +1,14 @@
 package br.com.seatecnologia.gdf.edital.admin.web.internal.portlet.action;
 
 import br.com.seatecnologia.gdf.edital.admin.web.internal.constants.EditalAdminWebPortletKeys;
-import br.com.seatecnologia.gdf.edital.admin.web.internal.mapper.EditalRequestMapper;
+import br.com.seatecnologia.gdf.edital.admin.web.internal.mapper.*;
 import br.com.seatecnologia.gdf.negocia.configuration.NegociaDFConfiguration;
 import br.com.seatecnologia.gdf.negocia.internal.request.EditalRequest;
 import br.com.seatecnologia.gdf.negocia.model.Edital;
 import br.com.seatecnologia.gdf.negocia.service.EditalLocalService;
 import com.liferay.document.library.kernel.model.DLFolder;
 import com.liferay.document.library.kernel.model.DLVersionNumberIncrease;
+import com.liferay.document.library.kernel.service.DLAppLocalService;
 import com.liferay.document.library.kernel.service.DLAppService;
 import com.liferay.document.library.kernel.service.DLFolderLocalService;
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
@@ -26,6 +27,8 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -46,14 +49,12 @@ import static br.com.seatecnologia.gdf.negocia.constants.NegociaDFConfigurationC
         configurationPid = CONFIGURATION_PID
 )
 public class SaveEditalAction implements MVCActionCommand {
+
     @Override
-    public boolean processAction(
-            javax.portlet.ActionRequest actionRequest,
-            javax.portlet.ActionResponse actionResponse) {
+    public boolean processAction(ActionRequest actionRequest, ActionResponse actionResponse) {
 
         try {
-            UploadPortletRequest uploadPortletRequest =
-                    _portal.getUploadPortletRequest(actionRequest);
+            UploadPortletRequest uploadPortletRequest = _portal.getUploadPortletRequest(actionRequest);
 
             // Campos existentes
             long editalId = ParamUtil.getLong(uploadPortletRequest, "editalId");
@@ -271,7 +272,7 @@ public class SaveEditalAction implements MVCActionCommand {
             }
 
             long fileEntryId;
-            // Esse if aqui tem que desaparecer vai ter um action só pra update vai ter uma jsp so pra editção com os campos novos de status
+
             if (editalId > 0) {
                 Edital edital = _editalLocalService.getEdital(editalId);
                 fileEntryId = edital.getArquivoEdital();
@@ -311,16 +312,40 @@ public class SaveEditalAction implements MVCActionCommand {
 //                    requerimento);
 
             } else {
-                EditalRequest editalRequest = _editalRequestMapper.toRequest(uploadPortletRequest);
-                _editalLocalService.addEdital(editalRequest);
-            }
 
+                EditalValorCNPJRequestMapper editalValorCNPJRequestMapper = new EditalValorCNPJRequestMapper();
+                ParcelamentoRequerenteRequestMapper parcelamentoRequerenteRequestMapper = new ParcelamentoRequerenteRequestMapper();
+                DescontoParcelasRequestMapper descontoParcelasRequestMapper = new DescontoParcelasRequestMapper();
+                ArquivoRequestMapper arquivoRequestMapper = new ArquivoRequestMapper();
+
+                EditalRequest editalRequest = new EditalRequestMapper(
+                        _dlFolderLocalService,
+                        _dlAppService,
+                        editalValorCNPJRequestMapper,
+                        parcelamentoRequerenteRequestMapper,
+                        descontoParcelasRequestMapper,
+                        arquivoRequestMapper,
+                        editalAdminWebConfiguration).toRequest(uploadPortletRequest);
+
+                _editalLocalService.addEdital(editalRequest);
+
+            }
             return true;
         } catch (Exception e) {
             _log.error("Error saving edital", e);
             return false;
         }
     }
+
+
+    @Activate
+    @Modified
+    protected void activate(Map<String, Object> properties) {
+        editalAdminWebConfiguration = ConfigurableUtil.createConfigurable(
+                NegociaDFConfiguration.class, properties);
+    }
+
+    private volatile NegociaDFConfiguration editalAdminWebConfiguration;
 
     @Reference
     private EditalLocalService _editalLocalService;
@@ -332,7 +357,7 @@ public class SaveEditalAction implements MVCActionCommand {
     private DLAppService _dlAppService;
 
     @Reference
-    private EditalRequestMapper _editalRequestMapper;
+    private DLFolderLocalService _dlFolderLocalService;
 
     private final static Log _log = LogFactoryUtil.getLog(SaveEditalAction.class);
 }

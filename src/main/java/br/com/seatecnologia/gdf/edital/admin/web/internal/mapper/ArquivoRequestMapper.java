@@ -5,7 +5,6 @@ import org.osgi.service.component.annotations.Component;
 
 import java.io.InputStream;
 
-@Component(service = ArquivoRequestMapper.class)
 public class ArquivoRequestMapper {
 
     public ArquivoRequest toRequest(String fileName, InputStream inputStream, long size, String fileType) {

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@Component(service = DescontoParcelasRequestMapper.class)
+
 public class DescontoParcelasRequestMapper {
 
     public List<DescontosParcelasRequest> toRequest(JSONArray descontosArray) {

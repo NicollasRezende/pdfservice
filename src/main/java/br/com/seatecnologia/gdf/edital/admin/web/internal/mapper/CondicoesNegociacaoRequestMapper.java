@@ -10,7 +10,6 @@ import org.osgi.service.component.annotations.Reference;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(service = CondicoesNegociacaoRequestMapper.class)
 public class CondicoesNegociacaoRequestMapper {
 
     public CondicoesNegociacaoRequest toRequest(JSONObject condicoesNegociacaoJson) {

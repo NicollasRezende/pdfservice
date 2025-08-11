@@ -322,9 +322,9 @@
                 multiple="true"
                 required="true"
         >
-          <aui:option value="MEI" label="MEI  (Microempreendedor Individual)" />
-          <aui:option value="ME" label="ME  (Microempresa)" />
-          <aui:option value="EPP" label="EPP  (Empresa de Pequeno Porte)" />
+          <aui:option value="MEI" label="MEI ? Microempreendedor Individual" />
+          <aui:option value="ME" label="ME ? Microempresa" />
+          <aui:option value="EPP" label="EPP ? Empresa de Pequeno Porte" />
           <aui:option value="DEMAIS" label="Demais empresas (sem enquadramento específico)" />
           <aui:option value="ENTIDADE_SEM_FINS" label="Entidade sem fins lucrativos" />
           <aui:option value="OSC" label="Organização da sociedade civil (OSC)" />
@@ -1446,508 +1446,508 @@
 
 <!-- CSS (mantido igual ao original) -->
 <style>
-/* CSS mantido exatamente igual ao original para preservar o layout */
-/* ========== LAYOUT BASE ========== */
-.sheet {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
+  /* CSS mantido exatamente igual ao original para preservar o layout */
+  /* ========== LAYOUT BASE ========== */
+  .sheet {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
 
-.sheet-section {
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #e9ecef;
-}
+  .sheet-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e9ecef;
+  }
 
-.sheet-section:last-child {
-  border-bottom: none;
-}
+  .sheet-section:last-child {
+    border-bottom: none;
+  }
 
-.sheet-subtitle {
-  margin-bottom: 1.5rem;
-  color: #343a40;
-  font-size: 1.3rem;
-  font-weight: 600;
-  border-left: 4px solid #007bff;
-  padding-left: 1rem;
-}
+  .sheet-subtitle {
+    margin-bottom: 1.5rem;
+    color: #343a40;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-left: 4px solid #007bff;
+    padding-left: 1rem;
+  }
 
-/* ========== GRID E LAYOUT DOS CAMPOS ========== */
-.form-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -0.75rem;
-  gap: 0;
-}
+  /* ========== GRID E LAYOUT DOS CAMPOS ========== */
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.75rem;
+    gap: 0;
+  }
 
-.form-col {
-  flex: 0 0 100%;
-  max-width: 100%;
-  padding: 0 0.75rem;
-  margin-bottom: 1.5rem;
-}
+  .form-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 0.75rem;
+    margin-bottom: 1.5rem;
+  }
 
-.form-col-6 {
-  flex: 0 0 50%;
-  max-width: 50%;
-}
-
-.form-col-4 {
-  flex: 0 0 33.333333%;
-  max-width: 33.333333%;
-}
-
-.form-col-3 {
-  flex: 0 0 25%;
-  max-width: 25%;
-}
-
-.form-col-8 {
-  flex: 0 0 66.666667%;
-  max-width: 66.666667%;
-}
-
-/* ========== FORMULÁRIO BÁSICO ========== */
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  font-weight: 500;
-  color: #495057;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.form-control {
-  border: 1px solid #ced4da;
-  border-radius: 0.375rem;
-  padding: 0.5rem 0.75rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.form-control:focus {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  outline: 0;
-}
-
-.form-text {
-  font-size: 0.875rem;
-  color: #6c757d;
-  margin-top: 0.25rem;
-}
-
-/* Campos obrigatórios */
-.text-warning {
-  color: #dc3545 !important;
-}
-
-/* ========== MULTISELECT MELHORADO ========== */
-.enhanced-multiselect {
-  border: 1px solid #ced4da;
-  border-radius: 0.375rem;
-  padding: 0.5rem;
-  min-height: 120px;
-  background-color: #fff;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.enhanced-multiselect:focus {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  outline: 0;
-}
-
-.enhanced-multiselect option:checked {
-  background: #007bff;
-  color: white;
-}
-
-.enhanced-multiselect optgroup {
-  font-weight: 600;
-  color: #495057;
-  background-color: #f8f9fa;
-  padding: 0.5rem;
-  border-bottom: 1px solid #dee2e6;
-}
-
-/* ========== SEARCH CONTAINER SIMPLIFICADO ========== */
-.multiselect-search-container {
-  background-color: #f8f9fa;
-  padding: 1rem;
-  border-radius: 0.375rem;
-  border: 1px solid #dee2e6;
-  margin-top: 0.75rem;
-}
-
-.multiselect-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-}
-
-.multiselect-actions .btn {
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
-  border-radius: 0.25rem;
-}
-
-.multiselect-counter {
-  text-align: center;
-  padding: 0.5rem;
-  background-color: #e7f3ff;
-  border-radius: 0.25rem;
-  margin-top: 0.5rem;
-}
-
-.multiselect-counter span {
-  font-weight: 600;
-  color: #0056b3;
-}
-
-/* ========== CONTAINERS DE DESCONTO ========== */
-.desconto-item-container {
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.desconto-content {
-  padding-left: 2.5rem;
-}
-
-.desconto-title {
-  color: #495057;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid #007bff;
-}
-
-/* ========== SEÇÃO DE PARCELAS ========== */
-.parcelas-section {
-  background: #fff;
-  border: 1px solid #e9ecef;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  margin-top: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.parcelas-title {
-  color: #6c757d;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e9ecef;
-}
-
-.parcela-item-container {
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.parcela-item-container .row {
-  margin-left: 2rem;
-}
-
-/* ========== INDICADORES MELHORADOS ========== */
-.desconto-indicator {
-  position: absolute;
-  left: 0.75rem;
-  top: 1.5rem;
-  width: 1.75rem;
-  height: 1.75rem;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
-}
-
-.parcela-indicator {
-  position: absolute;
-  left: 0.5rem;
-  top: 1.25rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  background: linear-gradient(135deg, #28a745, #1e7e34);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 600;
-  box-shadow: 0 1px 3px rgba(40, 167, 69, 0.3);
-}
-
-/* ========== RANGE DE PARCELAS ========== */
-.parcelas-range-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.parcelas-input {
-  flex: 1;
-  min-width: 80px;
-}
-
-.parcelas-separator {
-  color: #6c757d;
-  font-weight: 600;
-  padding: 0 0.25rem;
-}
-
-/* ========== BOTÕES MELHORADOS ========== */
-.btn {
-  border-radius: 0.375rem;
-  font-weight: 500;
-  transition: all 0.15s ease-in-out;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.btn-success {
-  background: #28a745;
-  border: none;
-}
-
-.btn-info {
-  background: #2e5aac;
-  border: none;
-}
-
-.btn-info:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-/* ========== CONTAINER DE VALORES MÍNIMOS ========== */
-#<portlet:namespace />valoresMinimosCNPJContainer {
-  background: #f8f9fa;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid #dee2e6;
-  margin-top: 1rem;
-}
-
-.valor-minimo-cnpj-field {
-  background: #fff;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 0.375rem;
-  border: 1px solid #e9ecef;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.valor-minimo-cnpj-field:last-child {
-  margin-bottom: 0;
-}
-
-/* ========== RADIO E CHECKBOX INLINE ========== */
-.form-check-inline {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.form-check-input {
-  margin-right: 0.5rem;
-}
-
-/* ========== MODAIS ========== */
-.modal-body table {
-  margin-bottom: 1.5rem;
-}
-
-.modal-body h6 {
-  color: #495057;
-  font-weight: 600;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  padding-left: 0.5rem;
-  border-left: 3px solid #007bff;
-}
-
-.modal-body h6:first-child {
-  margin-top: 0;
-}
-
-/* ========== ALERTAS MELHORADOS ========== */
-.alert {
-  border-radius: 0.5rem;
-  border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.alert-warning {
-  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
-  color: #856404;
-}
-
-.alert-info {
-  background: linear-gradient(135deg, #d1ecf1, #a8e6f1);
-  color: #0c5460;
-}
-
-/* ========== SECTION DIVIDER ========== */
-.section-divider {
-  border: none;
-  height: 2px;
-  background: linear-gradient(to right, #dee2e6, #007bff, #dee2e6);
-  margin: 2rem 0;
-}
-
-/* ========== RESPONSIVIDADE MELHORADA ========== */
-@media (max-width: 992px) {
-  .form-col-4,
-  .form-col-3 {
+  .form-col-6 {
     flex: 0 0 50%;
     max-width: 50%;
   }
-}
 
-@media (max-width: 768px) {
-  .sheet {
-    padding: 1rem;
+  .form-col-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
   }
 
-  .form-col,
-  .form-col-6,
-  .form-col-4,
-  .form-col-3,
+  .form-col-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
   .form-col-8 {
-    flex: 0 0 100%;
-    max-width: 100%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
   }
 
-  .parcela-item-container .row {
-    margin-left: 1.5rem;
+  /* ========== FORMULÁRIO BÁSICO ========== */
+  .form-group {
+    margin-bottom: 1.5rem;
   }
 
-  .desconto-content {
-    padding-left: 2rem;
-  }
-
-  .form-check-inline {
+  .form-group label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.5rem;
     display: block;
-    margin-bottom: 0.75rem;
+  }
+
+  .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: 0;
+  }
+
+  .form-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+  }
+
+  /* Campos obrigatórios */
+  .text-warning {
+    color: #dc3545 !important;
+  }
+
+  /* ========== MULTISELECT MELHORADO ========== */
+  .enhanced-multiselect {
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    min-height: 120px;
+    background-color: #fff;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .enhanced-multiselect:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: 0;
+  }
+
+  .enhanced-multiselect option:checked {
+    background: #007bff;
+    color: white;
+  }
+
+  .enhanced-multiselect optgroup {
+    font-weight: 600;
+    color: #495057;
+    background-color: #f8f9fa;
+    padding: 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  /* ========== SEARCH CONTAINER SIMPLIFICADO ========== */
+  .multiselect-search-container {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    border: 1px solid #dee2e6;
+    margin-top: 0.75rem;
   }
 
   .multiselect-actions {
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
   }
 
   .multiselect-actions .btn {
-    width: 100%;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
   }
 
+  .multiselect-counter {
+    text-align: center;
+    padding: 0.5rem;
+    background-color: #e7f3ff;
+    border-radius: 0.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .multiselect-counter span {
+    font-weight: 600;
+    color: #0056b3;
+  }
+
+  /* ========== CONTAINERS DE DESCONTO ========== */
+  .desconto-item-container {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .desconto-content {
+    padding-left: 2.5rem;
+  }
+
+  .desconto-title {
+    color: #495057;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #007bff;
+  }
+
+  /* ========== SEÇÃO DE PARCELAS ========== */
+  .parcelas-section {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .parcelas-title {
+    color: #6c757d;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .parcela-item-container {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .parcela-item-container .row {
+    margin-left: 2rem;
+  }
+
+  /* ========== INDICADORES MELHORADOS ========== */
+  .desconto-indicator {
+    position: absolute;
+    left: 0.75rem;
+    top: 1.5rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+  }
+
+  .parcela-indicator {
+    position: absolute;
+    left: 0.5rem;
+    top: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(40, 167, 69, 0.3);
+  }
+
+  /* ========== RANGE DE PARCELAS ========== */
   .parcelas-range-container {
-    flex-direction: column;
-    align-items: stretch;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .parcelas-input {
+    flex: 1;
+    min-width: 80px;
   }
 
   .parcelas-separator {
-    text-align: center;
-    padding: 0.25rem 0;
-  }
-}
-
-@media (max-width: 576px) {
-  .sheet-subtitle {
-    font-size: 1.1rem;
-    padding-left: 0.75rem;
-    border-left-width: 3px;
+    color: #6c757d;
+    font-weight: 600;
+    padding: 0 0.25rem;
   }
 
-  .enhanced-multiselect {
-    min-height: 100px;
+  /* ========== BOTÕES MELHORADOS ========== */
+  .btn {
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.15s ease-in-out;
   }
-}
 
-/* ========== MELHORIAS GERAIS ========== */
-/* Remove spinner em campos numéricos */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
 
-input[type="number"] {
-  -moz-appearance: textfield;
-}
+  .btn-success {
+    background: #28a745;
+    border: none;
+  }
 
-/* Estados de validação */
-.form-group.has-error .form-control,
-.form-group.has-error .enhanced-multiselect {
-  border-color: #dc3545;
-}
+  .btn-info {
+    background: #2e5aac;
+    border: none;
+  }
 
-.form-group.has-error .form-control:focus,
-.form-group.has-error .enhanced-multiselect:focus {
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
-}
+  .btn-info:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
 
-/* Smooth transitions */
-* {
-  box-sizing: border-box;
-}
+  /* ========== CONTAINER DE VALORES MÍNIMOS ========== */
+  #<portlet:namespace />valoresMinimosCNPJContainer {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #dee2e6;
+    margin-top: 1rem;
+  }
 
-.form-control,
-.enhanced-multiselect,
-.btn,
-.multiselect-search-container,
-.alert {
-  transition: all 0.2s ease-in-out;
-}
+  .valor-minimo-cnpj-field {
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.375rem;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
 
-/* Input groups melhorados */
-.input-group-addon {
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: white;
-  border: 1px solid #007bff;
-  font-weight: 500;
-}
+  .valor-minimo-cnpj-field:last-child {
+    margin-bottom: 0;
+  }
 
-/* Focus ring personalizado */
-.form-control:focus,
-.enhanced-multiselect:focus,
-.btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
+  /* ========== RADIO E CHECKBOX INLINE ========== */
+  .form-check-inline {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+  }
 
-/* Máscara monetária */
-.money-mask {
-  text-align: right;
-}
+  .form-check-input {
+    margin-right: 0.5rem;
+  }
 
-.money-mask:focus {
-  text-align: left;
-}
+  /* ========== MODAIS ========== */
+  .modal-body table {
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-body h6 {
+    color: #495057;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+    border-left: 3px solid #007bff;
+  }
+
+  .modal-body h6:first-child {
+    margin-top: 0;
+  }
+
+  /* ========== ALERTAS MELHORADOS ========== */
+  .alert {
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .alert-warning {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    color: #856404;
+  }
+
+  .alert-info {
+    background: linear-gradient(135deg, #d1ecf1, #a8e6f1);
+    color: #0c5460;
+  }
+
+  /* ========== SECTION DIVIDER ========== */
+  .section-divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, #dee2e6, #007bff, #dee2e6);
+    margin: 2rem 0;
+  }
+
+  /* ========== RESPONSIVIDADE MELHORADA ========== */
+  @media (max-width: 992px) {
+    .form-col-4,
+    .form-col-3 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sheet {
+      padding: 1rem;
+    }
+
+    .form-col,
+    .form-col-6,
+    .form-col-4,
+    .form-col-3,
+    .form-col-8 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    .parcela-item-container .row {
+      margin-left: 1.5rem;
+    }
+
+    .desconto-content {
+      padding-left: 2rem;
+    }
+
+    .form-check-inline {
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .multiselect-actions {
+      flex-direction: column;
+    }
+
+    .multiselect-actions .btn {
+      width: 100%;
+    }
+
+    .parcelas-range-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .parcelas-separator {
+      text-align: center;
+      padding: 0.25rem 0;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .sheet-subtitle {
+      font-size: 1.1rem;
+      padding-left: 0.75rem;
+      border-left-width: 3px;
+    }
+
+    .enhanced-multiselect {
+      min-height: 100px;
+    }
+  }
+
+  /* ========== MELHORIAS GERAIS ========== */
+  /* Remove spinner em campos numéricos */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Estados de validação */
+  .form-group.has-error .form-control,
+  .form-group.has-error .enhanced-multiselect {
+    border-color: #dc3545;
+  }
+
+  .form-group.has-error .form-control:focus,
+  .form-group.has-error .enhanced-multiselect:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  }
+
+  /* Smooth transitions */
+  * {
+    box-sizing: border-box;
+  }
+
+  .form-control,
+  .enhanced-multiselect,
+  .btn,
+  .multiselect-search-container,
+  .alert {
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Input groups melhorados */
+  .input-group-addon {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: 1px solid #007bff;
+    font-weight: 500;
+  }
+
+  /* Focus ring personalizado */
+  .form-control:focus,
+  .enhanced-multiselect:focus,
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  /* Máscara monetária */
+  .money-mask {
+    text-align: right;
+  }
+
+  .money-mask:focus {
+    text-align: left;
+  }
 </style>

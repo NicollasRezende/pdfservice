@@ -3,15 +3,12 @@ package br.com.seatecnologia.gdf.edital.admin.web.internal.mapper;
 import br.com.seatecnologia.gdf.negocia.configuration.NegociaDFConfiguration;
 import br.com.seatecnologia.gdf.negocia.internal.request.ArquivoRequest;
 import br.com.seatecnologia.gdf.negocia.internal.request.EditalRequest;
-import br.com.seatecnologia.gdf.negocia.internal.request.ReceitaRequest;
 import com.liferay.document.library.kernel.model.DLFolder;
 import com.liferay.document.library.kernel.service.DLAppService;
 import com.liferay.document.library.kernel.service.DLFolderLocalService;
-import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
-import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.repository.model.FileEntry;
@@ -22,28 +19,33 @@ import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.MimeTypesUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Validator;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Modified;
-import org.osgi.service.component.annotations.Reference;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import static br.com.seatecnologia.gdf.negocia.constants.NegociaDFConfigurationConstants.CONFIGURATION_PID;
-
-@Component(service = EditalRequestMapper.class,
-        configurationPid = CONFIGURATION_PID)
 public class EditalRequestMapper {
+
+    public EditalRequestMapper(
+            DLFolderLocalService dlFolderLocalService,
+            DLAppService dlAppService,
+            EditalValorCNPJRequestMapper editalValorCNPJRequestMapper,
+            ParcelamentoRequerenteRequestMapper parcelamentoRequerenteRequestMapper,
+            DescontoParcelasRequestMapper descontoParcelasRequestMapper,
+            ArquivoRequestMapper arquivoRequestMapper,
+            NegociaDFConfiguration editalAdminWebConfiguration) {
+        this._dlFolderLocalService = dlFolderLocalService;
+        this._dlAppService = dlAppService;
+        this._editalValorCNPJRequestMapper = editalValorCNPJRequestMapper;
+        this._parcelamentoRequerenteRequestMapper = parcelamentoRequerenteRequestMapper;
+        this._descontoParcelasRequestMapper = descontoParcelasRequestMapper;
+        this._arquivoRequestMapper = arquivoRequestMapper;
+        this.editalAdminWebConfiguration = editalAdminWebConfiguration;
+    }
 
     public EditalRequest toRequest(UploadPortletRequest uploadPortletRequest) {
 
@@ -110,8 +112,8 @@ public class EditalRequestMapper {
         editalRequest.setArquivoEdital(arquivoRequestEdital);
         editalRequest.setArquivoAssinaturaGestor(arquivoRequestAssinaturaGestor);
         editalRequest.setArquivoAssinaturaSecretaria(arquivoRequestAssinaturaSecretaria);
-
         editalRequest.setParcelamentoRequerente(_parcelamentoRequerenteRequestMapper.toRequest(parcelamentoDias));
+        editalRequest.setDlFolderId(editalAdminWebConfiguration.documentFolderId());
 
         Map<String, BigDecimal> valoresMinimosPorTipoCNPJ = new HashMap<>();
         if (especificarValorMinimoCNPJ != null && especificarValorMinimoCNPJ.length > 0) {
@@ -174,33 +176,13 @@ public class EditalRequestMapper {
         return file.getFileEntryId();
     }
 
-    @Activate
-    @Modified
-    protected void activate(Map<String, Object> properties) {
-        editalAdminWebConfiguration = ConfigurableUtil.createConfigurable(
-                NegociaDFConfiguration.class, properties);
-    }
-
-    @Reference
-    private DLFolderLocalService _dlFolderLocalService;
-
-    @Reference
-    private DLAppService _dlAppService;
-
-    @Reference
-    private EditalValorCNPJRequestMapper _editalValorCNPJRequestMapper;
-
-    @Reference
-    private ParcelamentoRequerenteRequestMapper _parcelamentoRequerenteRequestMapper;
-
-    @Reference
-    private DescontoParcelasRequestMapper _descontoParcelasRequestMapper;
-
-    @Reference
-    private ArquivoRequestMapper _arquivoRequestMapper;
-
-    private volatile NegociaDFConfiguration editalAdminWebConfiguration;
+    private final DLFolderLocalService _dlFolderLocalService;
+    private final DLAppService _dlAppService;
+    private final EditalValorCNPJRequestMapper _editalValorCNPJRequestMapper;
+    private final ParcelamentoRequerenteRequestMapper _parcelamentoRequerenteRequestMapper;
+    private final DescontoParcelasRequestMapper _descontoParcelasRequestMapper;
+    private final ArquivoRequestMapper _arquivoRequestMapper;
+    private final NegociaDFConfiguration editalAdminWebConfiguration;
 
     private final Log _log = LogFactoryUtil.getLog(EditalRequestMapper.class);
-
 }
